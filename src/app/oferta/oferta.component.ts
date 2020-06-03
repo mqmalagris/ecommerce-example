@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OfertasService } from '../ofertas.services';
 import { Oferta } from '../shared/oferta.model';
+import { Observable, interval } from 'rxjs';
 
 @Component({
   selector: 'app-oferta',
@@ -22,5 +23,12 @@ export class OfertaComponent implements OnInit {
         console.log(this.oferta);
 
       })
+      // this.route.params.subscribe((parametro:any)=>{console.log(parametro);},
+      //   (erro: any)=> console.log(erro),
+      //   ()=> console.log('processamento foi classificado como concluido')
+
+      //   )
+
+    let tempo = interval
   }
 }
