@@ -31,7 +31,6 @@ export class TopoComponent implements OnInit {
           return this.ofertasService.pesquisaOfertas(termo)
         }),
         catchError((err: any, observable : Observable<Oferta[]>) => {
-          console.log(err)
           return of<Oferta[]>([])
         })
       )
