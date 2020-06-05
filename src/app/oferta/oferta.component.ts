@@ -17,10 +17,16 @@ export class OfertaComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private ofertasService: OfertasService) { }
 
   ngOnInit(): void {
-    this.ofertasService.getOfertasPorId(this.route.snapshot.params['id'])
+    this.route.params.subscribe((parametros: any)=> {
+
+      this.ofertasService.getOfertasPorId(parametros.id)
       .then((oferta: Oferta) => {
         this.oferta = oferta
       })
+
+    })
+
+
   }
 
   ngOnDestroy(): void {
