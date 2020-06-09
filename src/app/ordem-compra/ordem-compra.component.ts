@@ -1,11 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdemCompraService } from './ordem-compra.service';
+import { Pedido } from '../shared/pedido.model';
 
 @Component({
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
-  styleUrls: ['./ordem-compra.component.css']
+  styleUrls: ['./ordem-compra.component.css'],
+  providers: [ OrdemCompraService ]
 })
 export class OrdemCompraComponent implements OnInit {
+
+  public idPedidoCompra: number
+
+  // Pedido
+
+  public pedido: Pedido = new Pedido('','','','')
+
+  //
 
   public endereco: string = ''
   public numero: string = ''
@@ -30,9 +41,10 @@ export class OrdemCompraComponent implements OnInit {
 
   public formEstado: string = 'disabled'
 
-  constructor() { }
+  constructor(private ordemCompraService: OrdemCompraService) { }
 
   ngOnInit(): void {
+    // this.ordemCompraService.efetivarCompra()
   }
 
   public atualizaEndereco(endereco: string): void {
@@ -74,6 +86,8 @@ export class OrdemCompraComponent implements OnInit {
       this.complementoValido = false
     }
 
+    // this.habilitaForm()
+
   }
 
   public atualizaFormaPgto(formaPgto: string): void {
@@ -87,7 +101,7 @@ export class OrdemCompraComponent implements OnInit {
       this.formaPgtoValido = false
     }
 
-    this.habilitaForm
+    this.habilitaForm()
   }
 
   public habilitaForm():void {
@@ -98,6 +112,20 @@ export class OrdemCompraComponent implements OnInit {
     } else {
       this.formEstado = 'disabled'
     }
+  }
+
+  public confirmarCompra() {
+
+    this.pedido.endereco = this.endereco
+    this.pedido.numero = this.numero
+    this.pedido.complemento = this.complemento
+    this.pedido.formaPgto = this.formaPgto
+
+    this.ordemCompraService.efetivarCompra(this.pedido)
+      .subscribe((idPedido: number)=> {
+        this.idPedidoCompra = idPedido
+
+      })
   }
 
 }
