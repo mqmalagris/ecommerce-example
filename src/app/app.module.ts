@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
-import { FormsModule } from '@angular/forms'
+// import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+
 import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +19,7 @@ import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
+    // FormsModule
+
   ],
   providers: [
     {provide:LOCALE_ID, useValue:'pt'},
