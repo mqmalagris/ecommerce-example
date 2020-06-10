@@ -227,6 +227,27 @@
       "complemento": "",
       "formaPgto": "dinheiro",
       "id": 6
+    },
+    {
+      "endereco": "Rua três",
+      "numero": "78",
+      "complemento": "Bl 1 apto 303",
+      "formaPgto": "dinheiro",
+      "id": 8
+    },
+    {
+      "endereco": "Rua três",
+      "numero": "78",
+      "complemento": "Bl 1 apto 303",
+      "formaPgto": "dinheiro",
+      "id": 9
+    },
+    {
+      "endereco": "Rua catorze",
+      "numero": "143",
+      "complemento": "",
+      "formaPgto": "debito",
+      "id": 10
     }
   ]
 }
