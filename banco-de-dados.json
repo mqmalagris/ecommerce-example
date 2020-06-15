@@ -187,53 +187,42 @@
   ],
   "pedidos": [
     {
-      "endereco": "Rua",
-      "numero": "12",
-      "complemento": "",
-      "formaPgto": "debito",
+      "endereco": "Rua A",
+      "numero": "123",
+      "complemento": null,
+      "formaPgto": "dinheiro",
+      "itens": [
+        {
+          "id": 2,
+          "img": {
+            "url": "/assets/ofertas/2/img1.jpg"
+          },
+          "titulo": "Cozinha Mexicana",
+          "descricao_oferta": "Almoço ou Jantar com Rodízio Mexicano delicioso.",
+          "valor": 32.9,
+          "quantidade": 1
+        }
+      ],
       "id": 1
     },
     {
-      "endereco": "Rua",
-      "numero": "12",
-      "complemento": "",
-      "formaPgto": "debito",
-      "id": 2
-    },
-    {
-      "endereco": "Rua Araguaia",
-      "numero": "1266",
-      "complemento": "Bl 2 Apto 407",
-      "formaPgto": "debito",
-      "id": 3
-    },
-    {
-      "endereco": "Rua araguaia",
-      "numero": "3212",
-      "complemento": "",
-      "formaPgto": "debito",
-      "id": 4
-    },
-    {
-      "endereco": "Rua J",
-      "numero": "23",
-      "complemento": "",
-      "formaPgto": "dinheiro",
-      "id": 5
-    },
-    {
-      "endereco": "Rua G",
-      "numero": "14",
-      "complemento": "",
-      "formaPgto": "dinheiro",
-      "id": 6
-    },
-    {
       "endereco": "Rua teste",
-      "numero": "131",
-      "complemento": "Bl T apto31",
+      "numero": "1223",
+      "complemento": "Bl 1 Apto 102",
       "formaPgto": "debito",
-      "id": 7
+      "itens": [
+        {
+          "id": 1,
+          "img": {
+            "url": "/assets/ofertas/1/img1.jpg"
+          },
+          "titulo": "Super Burger",
+          "descricao_oferta": "Rodízio de Mini-hambúrger com opção de entrada.",
+          "valor": 29.9,
+          "quantidade": 1
+        }
+      ],
+      "id": 2
     }
   ]
 }

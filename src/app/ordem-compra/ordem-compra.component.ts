@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OrdemCompraService } from './ordem-compra.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Pedido } from '../shared/pedido.model';
+import { CarrinhoService } from '../carrinho.service';
+import { ItemCarrinho } from '../shared/item-carrinho.model';
 
 
 
@@ -14,6 +16,7 @@ import { Pedido } from '../shared/pedido.model';
 export class OrdemCompraComponent implements OnInit {
 
   public idPedidoCompra: number
+  public itensCarrinho: ItemCarrinho[] = []
 
   public formulario: FormGroup = new FormGroup({
     'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
@@ -22,10 +25,13 @@ export class OrdemCompraComponent implements OnInit {
     'formaPgto': new FormControl(null, [Validators.required])
   })
 
-  constructor(private ordemCompraService: OrdemCompraService) { }
+  constructor(
+    private ordemCompraService: OrdemCompraService,
+    private carrinhoService: CarrinhoService
+  ) { }
 
   ngOnInit() {
-
+    this.itensCarrinho = this.carrinhoService.exibirItens()
   }
 
   public confirmarCompra(): void {
@@ -42,15 +48,29 @@ export class OrdemCompraComponent implements OnInit {
         this.formulario.value.endereco,
         this.formulario.value.numero,
         this.formulario.value.complemento,
-        this.formulario.value.formaPgto
+        this.formulario.value.formaPgto,
+        this.carrinhoService.exibirItens()
         )
 
       this.ordemCompraService.efetivarCompra(pedido)
         .subscribe((idPedido: number) => {
           this.idPedidoCompra = idPedido
+          this.carrinhoService.limparCarrinho()
         })
 
     }
 
+  }
+
+  public totalItensCarrinho() {
+    return this.carrinhoService.totalCarrinhoCompras()
+  }
+
+  public adicionar(item: ItemCarrinho): void {
+    this.carrinhoService.adicionarQuantidade(item)
+  }
+
+  public retirar(item: ItemCarrinho): void {
+    this.carrinhoService.retirarQuantidade(item)
   }
 }
