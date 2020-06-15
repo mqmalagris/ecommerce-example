@@ -223,6 +223,25 @@
         }
       ],
       "id": 2
+    },
+    {
+      "endereco": "Rua Gaste",
+      "numero": "11",
+      "complemento": "Bl 2 Apto 705",
+      "formaPgto": "dinheiro",
+      "itens": [
+        {
+          "id": 4,
+          "img": {
+            "url": "/assets/ofertas/4/img1.jpg"
+          },
+          "titulo": "Estância das águas",
+          "descricao_oferta": "Diversão garantida com piscinas, trilhas e muito mais.",
+          "valor": 31.9,
+          "quantidade": 2
+        }
+      ],
+      "id": 3
     }
   ]
 }
