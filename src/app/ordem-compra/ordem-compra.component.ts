@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrdemCompraService } from './ordem-compra.service';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Pedido } from '../shared/pedido.model';
+
+
 
 @Component({
   selector: 'app-ordem-compra',
@@ -10,7 +13,14 @@ import { NgForm } from '@angular/forms';
 })
 export class OrdemCompraComponent implements OnInit {
 
-  @ViewChild('formulario') public f: NgForm
+  public idPedidoCompra: number
+
+  public formulario: FormGroup = new FormGroup({
+    'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
+    'numero': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(8)]),
+    'complemento': new FormControl(null),
+    'formaPgto': new FormControl(null, [Validators.required])
+  })
 
   constructor(private ordemCompraService: OrdemCompraService) { }
 
@@ -19,7 +29,28 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public confirmarCompra(): void {
-    console.log(this.f);
+    if (this.formulario.status=== 'INVALID') {
+
+      this.formulario.get('endereco').markAsTouched()
+      this.formulario.get('numero').markAsTouched()
+      this.formulario.get('complemento').markAsTouched()
+      this.formulario.get('formaPgto').markAsTouched()
+
+    } else {
+
+      let pedido: Pedido = new Pedido(
+        this.formulario.value.endereco,
+        this.formulario.value.numero,
+        this.formulario.value.complemento,
+        this.formulario.value.formaPgto
+        )
+
+      this.ordemCompraService.efetivarCompra(pedido)
+        .subscribe((idPedido: number) => {
+          this.idPedidoCompra = idPedido
+        })
+
+    }
 
   }
 }
