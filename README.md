@@ -1,3 +1,4 @@
-# App2
+# ecommerce-example
 
-Projeto de aprendizado de site de compras coletivas
+Example project of collective/group buying site. Using Angular.
+
